@@ -1,0 +1,109 @@
+<mat-toolbar class="toolbar-text">
+    Courses
+  </mat-toolbar>
+  <div class="main-content" fxLayout="column">
+    <mat-form-field class="search-filter" fxFlex appearance="outline" floatLabel="always">
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" #input />
+    </mat-form-field>
+  
+    <div class="mat-elevation-z8">
+      <mat-progress-bar [mode]="loading ? 'indeterminate' : 'determinate'"></mat-progress-bar>
+      <div class="table-container">
+        <table mat-table [dataSource]="dataSource" matSort>
+          <!-- Define columns as usual -->
+          <ng-container matColumnDef="departmentId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Dept ID </th>
+            <td mat-cell *matCellDef="let row"> {{ row.departmentId }} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="courseNumber">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Course Number </th>
+            <td mat-cell *matCellDef="let row"> {{ row.courseNumber }} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="courseTitle">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Course Title </th>
+            <td mat-cell *matCellDef="let row"> {{ row.courseTitle }} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="sectionNumber">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Section </th>
+            <td mat-cell *matCellDef="let row"> {{ row.sectionNumber }} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="instructor">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Instructor </th>
+            <td mat-cell *matCellDef="let row"> {{ row.instructor }} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="days1">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Days </th>
+            <td mat-cell *matCellDef="let row"> {{ row.days1 }} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="startTime1">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Start Time </th>
+            <td mat-cell *matCellDef="let row"> {{ row.startTime1 }} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="endTime1">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> End Time </th>
+            <td mat-cell *matCellDef="let row"> {{ row.endTime1 }} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Actions </th>
+            <td mat-cell *matCellDef="let row">
+              <button
+                mat-button
+                color="primary"
+                *ngIf="userRole === 'STUDENT'; else adminActions"
+                (click)="addCourse(row)"
+              >
+                Add
+              </button>
+              <button
+                mat-button
+                color="warn"
+                *ngIf="userRole === 'STUDENT'"
+                (click)="removeCourse(row)"
+              >
+                Remove
+              </button>
+              <ng-template #adminActions>
+                <button mat-button color="accent" (click)="editCourse(row)">Edit</button>
+                <button mat-button color="warn" (click)="deleteCourse(row)">Delete</button>
+              </ng-template>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+          [class.highlight]="isSelected(row)">
+          </tr>
+          
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{ input.value }}"</td>
+          </tr>
+        </table>
+      </div>
+  
+      <mat-paginator [pageSizeOptions]="[10, 25, 50, 75]" aria-label="Select page of courses"></mat-paginator>
+    </div>
+  
+    <div *ngIf="userRole === 'ADMIN' || userRole === 'ROOT'" class="add-course-container">
+        <button mat-raised-button color="primary" (click)="addNewCourse()">Add Course</button>
+      </div>
+      
+    <div *ngIf="userRole === 'STUDENT'" class="submit-container">
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="selectedCourses.length === 0"
+        (click)="submitSelectedCourses()"
+      >
+        Generate Schedules
+      </button>
+    </div>
+  </div>
+  

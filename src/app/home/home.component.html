@@ -1,0 +1,46 @@
+<mat-drawer-container class="drawer-container" fxLayout="column">
+    <mat-drawer mode="side" class="side-nav" opened>
+        <div fxLayout="column">
+            <div class="sidebar-main-text">Dashboard</div>
+            <mat-divider></mat-divider>
+
+            <mat-nav-list tabindex="1">
+                <mat-list-item [routerLink]="['./courses']">
+                    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+                        <mat-icon mat-list-icon>school</mat-icon>
+                        <span mat-line>Courses</span>
+                    </div>
+                </mat-list-item>
+                <mat-list-item [routerLink]="['./approvals']" *ngIf="userInfo.role === 'ROOT'">
+                    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+                        <mat-icon mat-list-icon>check_circle</mat-icon>
+                        <span mat-line>Request Approvals</span>
+                    </div>
+                </mat-list-item>
+                <mat-list-item [routerLink]="['./reserved-times']">
+                    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+                        <mat-icon mat-list-icon>lock_clock</mat-icon>
+                        <span mat-line>Reserved Times</span>
+                    </div>
+                </mat-list-item>
+                <mat-list-item [routerLink]="['./schedules']">
+                    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+                        <mat-icon mat-list-icon>schedule</mat-icon>
+                        <span mat-line>Schedules</span>
+                    </div>
+                </mat-list-item>
+                <mat-list-item [routerLink]="['./csvupload']" *ngIf="userInfo.role === 'ROOT' || userInfo.role ==='ADMIN'">
+                    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+                        <mat-icon mat-list-icon>upload_file</mat-icon>
+                        <span mat-line>Upload CSV</span>
+                    </div>
+                </mat-list-item>
+            </mat-nav-list>
+
+        </div>
+    </mat-drawer>
+    <mat-drawer-content class="main-content" fxFlex>
+        <router-outlet></router-outlet>
+
+    </mat-drawer-content>
+</mat-drawer-container>

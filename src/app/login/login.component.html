@@ -1,0 +1,59 @@
+<div class="login-container" fxFlex fxLayout="column" fxLayoutGap="10px">
+  <!-- <mat-form-field [formControl]="form" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Placeholder">
+        <mat-hint>Hint</mat-hint>
+      </mat-form-field> -->
+  <div class="login-box mat-elevation-z3" fxFlex>
+    <mat-progress-bar [mode]="loading ? 'indeterminate' : 'determinate'"></mat-progress-bar>
+    <div  class="login-forms" fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="start center">
+      <img class="logo" src="/assets/ualrLogo.png">
+      <!-- <div class="title">SSP</div> -->
+      <div class="subtitle">Semester Schedule Planner</div>
+      <div class="form-fields" [formGroup]="loginForm" *ngIf="!registering && !showNotice" fxFlex fxLayout="column" fxLayoutGap="20px">
+        <mat-form-field fxFlex floatLabel="always" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" />
+        </mat-form-field>
+        <mat-form-field fxFlex floatLabel="always" appearance="outline">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput formControlName="password" />
+        </mat-form-field>
+        <button color="primary" mat-raised-button (click)="logIn()" [disabled]="loginForm?.invalid || loading">Sign In</button>
+        <button color="primary" mat-button (click)="toggleRegister()" [disabled]="loading">Register</button>
+      </div>
+      <div class="form-fields" [formGroup]="registerForm" *ngIf="registering && !showNotice" fxFlex fxLayout="column"
+        fxLayoutGap="20px">
+        <mat-form-field fxFlex floatLabel="always" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" />
+        </mat-form-field>
+        <mat-form-field fxFlex floatLabel="always" appearance="outline">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput formControlName="password" />
+        </mat-form-field>
+        <mat-form-field fxFlex floatLabel="always" appearance="outline">
+          <mat-label>Re-Enter Password</mat-label>
+          <input type="password" matInput formControlName="passwordConfirm" />
+        </mat-form-field>
+        <mat-form-field fxFlex floatLabel="always" appearance="outline">
+          <mat-label>Role</mat-label>
+          <mat-select formControlName="role">
+            <mat-option value="STUDENT">Student</mat-option>
+            <mat-option value="ADMIN">Administrator</mat-option>
+            <mat-option value="ROOT">Root</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-error *ngIf="showPasswordConflict">Passwords do not match.</mat-error>
+        <button color="primary" mat-raised-button (click)="register()" [disabled]="registerForm?.invalid">Register</button>
+        <button color="primary" mat-button (click)="toggleRegister()">Back</button>
+      </div>
+      <div *ngIf="showNotice" fxLayout="column" fxLayoutGap="15px">
+        <div *ngIf="registerForm.value.role === 'STUDENT'">{{studentMessage}}</div>
+        <div *ngIf="registerForm.value.role !== 'STUDENT'">{{adminRootMessage}}</div>
+        <button mat-button (click)="goBack()">Back</button>
+      </div>
+    </div>
+</div>
+
+</div>

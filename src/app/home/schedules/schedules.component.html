@@ -1,0 +1,142 @@
+<!-- Saved Schedule -->
+<div *ngIf="savedSchedule; else generateSchedules" class="saved-schedule-container">
+    <div class="schedule-card">
+      <h3>Saved Schedule</h3>
+      <div class="responsive-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Dept ID</th>
+              <th>Course#</th>
+              <th>Course Title</th>
+              <th>Sec#</th>
+              <th>Instructor</th>
+              <th>Days</th>
+              <th>Start Time</th>
+              <th>End Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let course of savedSchedule">
+              <td>{{ course.departmentId }}</td>
+              <td>{{ course.courseNumber }}</td>
+              <td>{{ course.courseTitle }}</td>
+              <td>{{ course.sectionNumber }}</td>
+              <td>{{ course.instructor }}</td>
+              <td>{{ course.days1 }}</td>
+              <td>{{ course.startTime1 }}</td>
+              <td>{{ course.endTime1 }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <button
+        mat-raised-button
+        color="warn"
+        class="delete-schedule-button"
+        (click)="deleteSchedule()"
+      >
+        Delete This Schedule
+      </button>
+    </div>
+  </div>
+  
+  <!-- Generated Schedules -->
+  <ng-template #generateSchedules>
+    <div *ngIf="schedules.length > 0;" class="schedules-container">
+      <div *ngFor="let schedule of schedules; let i = index" class="schedule-card">
+        <h3>Schedule {{ i + 1 }}</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Dept ID</th>
+              <th>Course#</th>
+              <th>Course Title</th>
+              <th>Sec#</th>
+              <th>Instructor</th>
+              <th>Days</th>
+              <th>Start Time</th>
+              <th>End Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let course of schedule">
+              <td>{{ course.departmentId }}</td>
+              <td>{{ course.courseNumber }}</td>
+              <td>{{ course.courseTitle }}</td>
+              <td>{{ course.sectionNumber }}</td>
+              <td>{{ course.instructor }}</td>
+              <td>{{ course.days1 }}</td>
+              <td>{{ course.startTime1 }}</td>
+              <td>{{ course.endTime1 }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <button
+          mat-raised-button
+          color="primary"
+          class="save-schedule-button"
+          (click)="saveSchedule(schedule)"
+        >
+          Save Schedule
+        </button>
+      </div>
+    </div>
+  </ng-template>
+  
+
+<!-- ADMIN/ROOT View of Another User's Schedule -->
+<div *ngIf="adminViewSchedule" class="schedule-card">
+  <h3>Viewing {{ userEmailForView }}'s Schedule</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Dept ID</th>
+        <th>Course#</th>
+        <th>Course Title</th>
+        <th>Sec#</th>
+        <th>Instructor</th>
+        <th>Days</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let course of adminViewSchedule">
+        <td>{{ course.departmentId }}</td>
+        <td>{{ course.courseNumber }}</td>
+        <td>{{ course.courseTitle }}</td>
+        <td>{{ course.sectionNumber }}</td>
+        <td>{{ course.instructor }}</td>
+        <td>{{ course.days1 }}</td>
+        <td>{{ course.startTime1 }}</td>
+        <td>{{ course.endTime1 }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <button mat-raised-button color="red" class="admin-delete-schedule-button" (click)="deleteSchedule(userEmailForView)">Delete This Schedule</button>
+</div>
+
+<!-- Visible only to ADMIN/ROOT -->
+<div *ngIf="userRole === 'ADMIN' || userRole === 'ROOT'" class="user-schedule-table">
+  <h3>All Users With Saved Schedules</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>User Email</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of allUserSchedules">
+        <td>{{ user.userEmail }}</td>
+        <td>
+          <button mat-raised-button color="primary" (click)="viewUserSchedule(user.userEmail)">View Schedule</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+  

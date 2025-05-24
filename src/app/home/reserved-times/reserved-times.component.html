@@ -1,0 +1,85 @@
+<div class="reserved-times-container">
+  <h2>Reserved Times</h2>
+
+  <!-- Display Cards for Students -->
+  <div *ngIf="userRole === 'STUDENT'" class="days-container">
+    <div *ngFor="let day of reservedTimes" class="day-card">
+      <h3 class="day-title">{{ day.dayOfWeek }}</h3>
+      <div *ngFor="let block of day.timeBlocks; let i = index" class="time-block">
+        <span class="time">{{ block.startTime }} - {{ block.endTime }}</span>
+        <button class="delete-button" (click)="deleteTimeBlock(day.dayOfWeek, i)">Delete</button>
+      </div>
+      <p *ngIf="day.timeBlocks.length === 0" class="no-times">No reserved times</p>
+    </div>
+  </div>
+</div>
+
+<!-- Add Reserved Time Form (Visible only for STUDENT users) -->
+<div *ngIf="userRole === 'STUDENT'" class="add-time-form-container">
+  <h3>Add Reserved Time</h3>
+  <form (ngSubmit)="addReservedTime()">
+    <div class="form-group">
+      <label for="day">Day of the Week</label>
+      <select id="day" [(ngModel)]="newTime.dayOfWeek" name="day" required>
+        <option *ngFor="let day of weekdays" [value]="day">{{ day }}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="startTime">Start Time</label>
+      <input id="startTime" type="time" [(ngModel)]="newTime.startTime" name="startTime" required />
+    </div>
+    <div class="form-group">
+      <label for="endTime">End Time</label>
+      <input id="endTime" type="time" [(ngModel)]="newTime.endTime" name="endTime" required />
+    </div>
+    <button type="submit">Add Time</button>
+  </form>
+</div>
+
+<!-- Admin/Root View -->
+<div *ngIf="userRole === 'ADMIN' || userRole === 'ROOT'" class="reserved-times-container">
+  <!-- Default Placeholder Cards When No User is Selected -->
+  <div *ngIf="!viewedUserEmail" class="days-container">
+    <div *ngFor="let day of defaultDays" class="day-card">
+      <h4 class="day-title">{{ day.dayOfWeek }}</h4>
+      <p class="no-times">No reserved times</p>
+    </div>
+  </div>
+
+  <!-- Viewing Selected User's Reserved Times -->
+  <div *ngIf="viewedUserEmail" class="reserved-times-wrapper">
+    <h3>Viewing Reserved Times for {{ viewedUserEmail }}</h3>
+    <div class="days-container">
+      <div *ngFor="let day of viewedUserReservedTimes" class="day-card">
+        <h4 class="day-title">{{ day.dayOfWeek }}</h4>
+        <div *ngFor="let block of day.timeBlocks" class="time-block">
+          <span class="time">{{ block.startTime }} - {{ block.endTime }}</span>
+        </div>
+        <p *ngIf="day.timeBlocks.length === 0" class="no-times">No reserved times</p>
+      </div>
+    </div>
+    <!-- Delete All Button -->
+    <button class="delete-all-button" (click)="deleteAllReservedTimes()">Delete Reserved Times</button>
+  </div>
+
+  <!-- Reserved Times Table -->
+  <div class="user-emails-table">
+    <h3>All Users with Reserved Times</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>User Email</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of allUserEmails">
+          <td>{{ user }}</td>
+          <td>
+            <button mat-raised-button color="primary" (click)="viewUserReservedTimes(user)">View Reserved Times</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

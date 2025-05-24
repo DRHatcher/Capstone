@@ -1,0 +1,267 @@
+.reserved-times-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+}
+
+/* Wrapper for cards and button */
+.reserved-times-wrapper {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center the contents horizontally */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.days-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  width: 100%; /* Full width to ensure proper centering */
+}
+
+.day-card {
+  background-color: #ffffff;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  min-width: 200px;
+  max-width: 300px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.day-title {
+  font-size: 1.4em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.time-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  margin-bottom: 8px;
+}
+
+.time {
+  font-size: 0.9rem;
+  color: #0056b3;
+  flex: 1;
+  text-align: left;
+}
+
+.delete-button {
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+  background-color: darkred;
+}
+
+.no-times {
+  font-size: 0.9em;
+  color: #999;
+  font-style: italic;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Delete All Button */
+.delete-all-button {
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 20px;
+  display: block;
+  align-self: center;
+}
+
+.delete-all-button:hover {
+  background-color: darkred;
+}
+
+/* Add Time Form Container */
+.add-time-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h3 {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 1.6rem;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #0056b3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  align-self: center;
+}
+
+button[type="submit"]:hover {
+  background-color: #003d80;
+}
+
+/* User Emails Table */
+.user-emails-table {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  padding: 16px;
+  max-width: 800px;
+  width: 100%;
+}
+
+.user-emails-table h3 {
+  margin-bottom: 16px;
+  font-size: 1.5rem;
+  text-align: center;
+  color: #333;
+}
+
+.user-emails-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.user-emails-table th,
+.user-emails-table td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.user-emails-table th:first-child,
+.user-emails-table td:first-child {
+  text-align: left; /* Align email to the left */
+}
+
+.user-emails-table th:last-child,
+.user-emails-table td:last-child {
+  text-align: right; /* Align actions to the right */
+}
+
+.user-emails-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.user-emails-table tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+.user-emails-table td button {
+  background-color: #3f51b5; /* Restore original button color */
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s;
+}
+
+.user-emails-table td button:hover {
+  background-color: #2c387e;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .user-emails-table th,
+  .user-emails-table td {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+
+  .time-block {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .delete-button {
+    margin: 8px 0 0 0;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .user-emails-table th,
+  .user-emails-table td {
+    font-size: 0.8rem;
+    padding: 6px;
+  }
+
+  .user-emails-table td button {
+    font-size: 0.8rem;
+    padding: 5px 8px;
+  }
+
+  .delete-all-button {
+    width: 100%;
+  }
+
+  .day-card {
+    min-width: 100%;
+  }
+}

@@ -1,0 +1,265 @@
+.schedules-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    padding: 16px;
+  }
+  
+  .schedule-card {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    width: 100%;
+    max-width: 800px;
+    flex: 1 1 calc(50% - 32px);
+    box-sizing: border-box;
+  }
+  
+  .schedule-card h3 {
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: 1.5rem;
+    text-align: center;
+    color: #333;
+  }
+  
+  .schedule-card table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+  }
+  
+  .schedule-card th,
+  .schedule-card td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .schedule-card th {
+    font-weight: bold;
+    background-color: #f7f7f7;
+  }
+  
+  .schedule-card button {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 4px;
+  }
+  
+  /* Styles specific to saved schedules */
+  .saved-schedule-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+    gap: 24px;
+  }
+  
+  .saved-schedule-container .schedule-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+  
+  .saved-schedule-container button.delete-schedule-button {
+    margin-top: 16px;
+    background-color: red;
+    color: #fff;
+    font-size: 1rem;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .saved-schedule-container button.delete-schedule-button:hover {
+    background-color: darkred;
+  }
+  
+  /* Responsive design for smaller devices */
+  @media (max-width: 768px) {
+    .schedule-card {
+      width: 100%;
+      flex: 1 1 100%;
+    }
+  
+    .schedule-card button {
+      width: 100%;
+      padding: 12px;
+      font-size: 1.1rem;
+    }
+  
+    .saved-schedule-container {
+      padding: 8px;
+      gap: 16px;
+    }
+  
+    .saved-schedule-container .schedule-card {
+      max-width: 100%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .schedule-card h3 {
+      font-size: 1.25rem;
+    }
+  
+    .schedule-card th,
+    .schedule-card td {
+      font-size: 0.9rem;
+      padding: 6px;
+    }
+  
+    .saved-schedule-container button.delete-schedule-button {
+      font-size: 0.9rem;
+      padding: 10px;
+    }
+  }
+/* Admin/Root View Schedule Card */
+.schedule-card {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  max-width: 800px;
+  margin: 0 auto 24px; /* Center aligned and spaced below */
+  text-align: center;
+}
+
+.schedule-card h3 {
+  margin: 16px 0;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.schedule-card table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+}
+
+.schedule-card th,
+.schedule-card td {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.schedule-card th {
+  background-color: #f7f7f7;
+  font-weight: bold;
+}
+
+.schedule-card button {
+  margin-top: 16px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Table for All Users */
+.user-schedule-table {
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 0 auto; /* Centered alignment */
+  padding: 16px;
+  max-width: 800px;
+  width: 100%;
+  text-align: center;
+}
+
+.user-schedule-table h3 {
+  margin-bottom: 16px;
+  font-size: 1.25rem;
+  color: #333;
+}
+
+.user-schedule-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.user-schedule-table th,
+.user-schedule-table td {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.user-schedule-table th {
+  background-color: #f7f7f7;
+  font-weight: bold;
+}
+
+.user-schedule-table td button {
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  border-radius: 4px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .schedule-card,
+  .user-schedule-table {
+    width: 95%;
+    padding: 12px;
+  }
+
+  .schedule-card table th,
+  .schedule-card table td,
+  .user-schedule-table table th,
+  .user-schedule-table table td {
+    font-size: 0.9rem;
+    padding: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .schedule-card h3,
+  .user-schedule-table h3 {
+    font-size: 1rem;
+  }
+
+  .schedule-card table th,
+  .schedule-card table td,
+  .user-schedule-table table th,
+  .user-schedule-table table td {
+    font-size: 0.8rem;
+    padding: 4px;
+  }
+
+  .schedule-card button,
+  .user-schedule-table td button {
+    font-size: 0.8rem;
+    padding: 6px 10px;
+  }
+
+  :host ::ng-deep .schedule-card button.mat-raised-button.admin-delete-schedule-button {
+    background-color: red !important; 
+    color: #ffffff !important; 
+    border: none !important; /* If Material is adding a border */
+  }
+  
+  :host ::ng-deep .schedule-card button.mat-raised-button.admin-delete-schedule-button:hover {
+    background-color: darkred !important; 
+  }
+  
+  :host ::ng-deep .schedule-card button.mat-raised-button.admin-delete-schedule-button:disabled {
+    background-color: #e0e0e0 !important; 
+    color: #666 !important;
+  }
+  
+  
+
+
+
+}

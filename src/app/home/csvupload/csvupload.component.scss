@@ -1,0 +1,115 @@
+.csv-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 40px auto;
+    width: 90%; /* Ensures it fits smaller screens */
+  }
+  
+  .csv-upload h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+  }
+  
+  input[type="file"] {
+    display: block;
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%; /* Full width on smaller screens */
+    max-width: 200px; /* Restrict button width on larger screens */
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+    transform: scale(1.02);
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+    transform: none;
+  }
+  
+  p {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #666;
+    text-align: center;
+  }
+  
+  /* Responsive Design */
+  @media screen and (max-width: 768px) {
+    .csv-upload {
+      padding: 15px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  
+    h2 {
+      font-size: 1.2rem;
+    }
+  
+    input[type="file"] {
+      font-size: 0.9rem;
+    }
+  
+    button {
+      font-size: 0.9rem;
+      padding: 8px 16px;
+    }
+  
+    p {
+      font-size: 0.8rem;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .csv-upload {
+      padding: 10px;
+      border: none;
+      box-shadow: none;
+      background-color: transparent;
+    }
+  
+    h2 {
+      font-size: 1rem;
+      color: #444;
+    }
+  
+    button {
+      font-size: 0.8rem;
+      padding: 6px 12px;
+    }
+  
+    p {
+      font-size: 0.75rem;
+    }
+  }
+  
+  

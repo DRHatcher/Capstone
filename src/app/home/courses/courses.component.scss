@@ -1,0 +1,54 @@
+.main-content {
+    padding: 30px;
+}
+
+.search-filter {
+    width: 100%;
+}
+
+.actions-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+  }
+  
+  .submit-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+  button {
+    margin: 5px;
+  }
+  
+  button.mat-button {
+    font-size: 0.9rem;
+  }
+  
+  .highlight {
+    background-color: #d1ecf1; /* Light blue */
+    color: #0c5460; /* Dark blue */
+  }
+  
+  .table-container {
+    width: 100%;
+    overflow-x: auto; // Allow horizontal scrolling on smaller screens
+    -webkit-overflow-scrolling: touch; // Smooth scrolling for touch devices
+  }
+  
+  table {
+    width: 100%; // Ensure the table takes the full width of the container
+    min-width: 600px; // Define a minimum width to avoid collapsing columns
+  }
+  
+  @media screen and (max-width: 768px) {
+    .mat-header-cell,
+    .mat-cell {
+      font-size: 12px; // Adjust font size for smaller screens
+    }
+    table {
+      min-width: 300px; // Reduce the minimum width for very small screens
+    }
+  }
+  

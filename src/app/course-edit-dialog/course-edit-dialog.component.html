@@ -1,0 +1,49 @@
+<h1 mat-dialog-title>Course</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>Department ID</mat-label>
+    <input matInput [(ngModel)]="data.courseData.DepartmentID" />
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>Course Number</mat-label>
+    <input matInput [(ngModel)]="data.courseData['Course#']" />
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>Course Title</mat-label>
+    <input matInput [(ngModel)]="data.courseData.CourseTitle" />
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>Section</mat-label>
+    <input matInput [(ngModel)]="data.courseData['Sec#']" />
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>Instructor</mat-label>
+    <input matInput [(ngModel)]="data.courseData.Instructor" />
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>Days</mat-label>
+    <input matInput [(ngModel)]="data.courseData.Days1" />
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>Start Time</mat-label>
+    <input
+      matInput
+      type="time"
+      [value]="formatToInputTime(data.courseData.StartTime1)"
+      (input)="onTimeInput($event, 'StartTime1')"
+    >
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>End Time</mat-label>
+    <input
+      matInput
+      type="time"
+      [value]="formatToInputTime(data.courseData.EndTime1)"
+      (input)="onTimeInput($event, 'EndTime1')"
+    >
+  </mat-form-field>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button color="primary" (click)="onSave()">Save</button>
+</div>

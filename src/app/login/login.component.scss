@@ -1,0 +1,55 @@
+.login-box {
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 480px;
+}
+
+.confirmation-box {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 560px;
+}
+
+
+.login-forms {
+    padding: 30px;
+}
+
+.logo {
+    width: 250px;
+    height: 160px;
+}
+
+.title {
+    font-size: 36px;
+    color: #235e9a;
+}
+
+.subtitle {
+    font-size: 18px;
+    padding-bottom: 20px;
+}
+
+.form-fields {
+    width: 100%;
+}
+
+
+.message {
+    font-size: 20px;
+}
+
+.sub-message {
+    font-size: 16px;
+}
+
+.login-button {
+    padding-top: 20px;
+}

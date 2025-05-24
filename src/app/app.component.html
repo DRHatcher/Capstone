@@ -1,0 +1,32 @@
+
+<mat-toolbar fxLayout="row" fxLayoutAlign="start center">
+
+  <div class="white-icons" fxFlex>
+    <div fxLayout="row" fxLayoutGap="5px">
+    <img class="logo" src="/assets/trojans-logo-white.png">
+    <div fxLayout="column" class="logo-text">
+    <div class="logo-title">SSP</div>
+    <div class="logo-subtitle">Semester Schedule Planner</div>
+    </div>
+    </div>
+  </div>
+
+<div>
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon *ngIf="loggedIn" class="white-icons">person</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button (click)="logout()" mat-menu-item>
+      <mat-icon>logout</mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-menu>
+  </div>
+  
+</mat-toolbar>
+
+
+<main class="main">
+<app-login *ngIf="!loggedIn"></app-login>
+<router-outlet *ngIf="loggedIn" />
+</main>
